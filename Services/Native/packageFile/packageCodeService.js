@@ -1,0 +1,33 @@
+const fs = require("fs");
+var path = require("path");
+const CRUDConfigurations = require("../../../CRUD_Config");
+let instance = null;
+
+class packageFileCodeService {
+  constructor() {} //i am also here if you need me
+
+  static getInstance() {
+    if (!instance) {
+      instance = new packageFileCodeService();
+    }
+    return instance;
+  }
+
+  GetPackageFileCode(fileName) {
+    let filePath =
+      __dirname +
+      "../../../../" +
+      CRUDConfigurations.NativeAppCodeFolderName +
+      "/" +
+      fileName +
+      ".txt";
+    let remainingCode = fs.readFileSync(path.resolve(filePath), "utf8");
+    let code = "";
+    code = code.concat(
+      `{"expo":{ "name": " ${CRUDConfigurations.NativeProjectFolderName}", "slug": "${CRUDConfigurations.NativeProjectFolderName}",${remainingCode}`
+    );
+    return code;
+  }
+}
+
+module.exports = packageFileCodeService;

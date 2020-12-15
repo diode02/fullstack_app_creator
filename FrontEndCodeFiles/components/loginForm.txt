@@ -1,0 +1,64 @@
+import React, { useState } from "react";
+import auth from "../services/authService";
+import { Redirect } from "react-router-dom";
+const LoginForm = (props) => {
+  const [userCredentials, setUserCredentials] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = userCredentials;
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await auth.login(email, password);
+      const { state } = props.location;
+      window.location = state ? state.from.pathname : "/";
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUserCredentials({ ...userCredentials, [name]: value });
+  };
+
+  if (auth.isUserLoggedIn()) return <Redirect to="/" />;
+
+  return (
+    <div className="sign-in">
+      <h1>SIGNIN</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            value={email}
+            onChange={handleChange}
+            name="email"
+            id="email"
+            type="text"
+            className="form-control"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            value={password}
+            onChange={handleChange}
+            name="password"
+            id="password"
+            type="password"
+            className="form-control"
+          />
+        </div>
+
+        <button className="btn btn-primary custom-btn">Login</button>
+      </form>
+    </div>
+  );
+};
+
+export default LoginForm;

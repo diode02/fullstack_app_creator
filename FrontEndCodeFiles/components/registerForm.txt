@@ -1,0 +1,93 @@
+import React, { useState } from "react";
+import * as userService from "../services/userService";
+import auth from "../services/authService";
+import { Redirect } from "react-router-dom";
+
+const RegisterForm = () => {
+  const [userCredentials, setUserCredetials] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const { name, password, confirmPassword, email } = userCredentials;
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      alert("passowrd dont match");
+      return;
+    }
+    try {
+      await userService.register(userCredentials);
+      window.location = "/"; //go to homepage and reload it
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setUserCredetials({ ...userCredentials, [name]: value });
+  };
+
+  if (auth.isUserLoggedIn()) return <Redirect to="/" />;
+  return (
+    <div className="content">
+      <h1>Register Form</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            value={email}
+            onChange={handleChange}
+            name="email"
+            id="email"
+            type="text"
+            className="form-control"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            value={password}
+            onChange={handleChange}
+            name="password"
+            id="password"
+            type="password"
+            className="form-control"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Confirm Password</label>
+          <input
+            value={confirmPassword}
+            onChange={handleChange}
+            name="confirmPassword"
+            id="confirmPassword"
+            type="password"
+            className="form-control"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input
+            value={name}
+            onChange={handleChange}
+            name="name"
+            id="name"
+            type="name"
+            className="form-control"
+          />
+        </div>
+
+        <button className="btn btn-primary custom-btn">Register</button>
+      </form>
+    </div>
+  );
+};
+
+export default RegisterForm;

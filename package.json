@@ -1,0 +1,39 @@
+{
+  "name": "mern-crud-generator",
+  "version": "1.1.2",
+  "description": "A CLI that takes JSON scheema and helps in generating CRUD in React along with API in express and database in MongoDB",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UmairAwan128/MERN-CRUD-Generator.git"
+  },
+  "keywords": [
+    "mrn crud generator",
+    "crud",
+    "crud generator",
+    "mern",
+    "create mern app",
+    "mern app",
+    "react crud generator",
+    "node crud generator",
+    "mern app generator ",
+    "node app generator",
+    "express api generator",
+    "node crud generator",
+    "express crud generator"
+  ],
+  "author": "Umair Shehzad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UmairAwan128/MERN-CRUD-Generator/issues"
+  },
+  "homepage": "https://github.com/UmairAwan128/MERN-CRUD-Generator",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "inquirer": "^6.4.1",
+    "joi": "^14.3.1",
+    "jsonschema": "^1.2.4",
+    "png-to-ico": "^2.0.5",
+    "rimraf": "^3.0.0",
+    "zip-a-folder": "0.0.9"
+  }
+}

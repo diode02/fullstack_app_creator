@@ -1,0 +1,3 @@
+const navigator = createStackNavigator(
+  {
+    Home: HomeScreen,
