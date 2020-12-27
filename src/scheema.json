@@ -16,6 +16,11 @@
             "name": "Price",
             "type": "number",
             "required": true
+          },
+          {
+            "name": "Quantity",
+            "type": "number",
+            "required": true
           }
         ]
       },

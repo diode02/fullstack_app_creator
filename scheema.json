@@ -16,20 +16,10 @@
             "name": "Price",
             "type": "number",
             "required": true
-          }
-        ]
-      },
-      {
-        "name": "Person",
-        "columns": [
-          {
-            "name": "Name",
-            "type": "text",
-            "required": true
           },
           {
-            "name": "Age",
-            "type": "date",
+            "name": "Quantity",
+            "type": "number",
             "required": true
           }
         ]
