@@ -57,6 +57,9 @@ const LoginForm = (props) => {
 
         <button className="btn btn-primary custom-btn">Login</button>
       </form>
+      <p>Sample User Credentials:</br>
+        email: "user@SampleApp.com", password: hashedPassword,
+      </p>
     </div>
   );
 };

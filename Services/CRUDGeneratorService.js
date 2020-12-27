@@ -124,10 +124,10 @@ class CRUDGeneratorService {
 
       if (onlyNodeApp == false) {
         //only if
-        // isCodeGenerated = frontEndGenerateServiceObj.generateFrontEnd(
-        //   appScheema,
-        //   ReactProjectFolderCompName
-        // );
+        isCodeGenerated = frontEndGenerateServiceObj.generateFrontEnd(
+          appScheema,
+          ReactProjectFolderCompName
+        );
         isCodeGenerated = nativeGenerateServiceObj.generateNative(
           appScheema,
           NativeProjectFolderCompName
